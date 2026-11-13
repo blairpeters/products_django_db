@@ -1,0 +1,35 @@
+{% extends 'master.html' %}
+{% load humanize %}
+{% block title %} {{ product.name }} {% endblock %}
+{% block body %}
+
+<div class="container">
+
+<div class="row">
+    <div class="col-sm-4">
+        <img src="{{ product.pic.url }}" alt="{{ product.name }}" class="img-fluid">
+    </div>
+    <div class="col-sm-8">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.code }}</p>
+        <p>Cost: ksh{{ product.cost | intcomma}}</p>
+        <p>Price: ksh{{ product.price | intcomma}}</p>
+        <p>Discount: ksh{{ product.discount | intcomma}}</p>
+        <p>{{ product.category }}</p>
+
+        {% if product.for_sale %}
+        <p class="text-success">For Sale</p>
+        {% else %}
+        <p class="text-danger">Not For Sale</p>
+        {% endif %}
+
+        <p>Created: {{ product.created_at | naturaltime}}</p>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

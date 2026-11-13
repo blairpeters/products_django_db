@@ -1,12 +1,14 @@
 {% extends 'master.html' %}
+{% load django_bootstrap5 %}
 {% block title %} Add {% endblock %}
 {% block body %}
 
 <div class="container">
     <h2>Products</h2>
-<form action="{% url 'add' %}" method = "post">
+<form action="{% url 'add' %}" method = "post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+{#    {{ form.as_p }}#}
+    {% bootstrap_form form %}
     <button class=" btn btn-info">Submit</button>
 </form>
 </div>
